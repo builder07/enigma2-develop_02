@@ -76,7 +76,7 @@ def skin_user_skinname():
 
 # example: loadSkin("nemesis_greenline/skin.xml")
 config.skin = ConfigSubsection()
-DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "PLi-FullNightHD/skin.xml" or "PLi-HD/skin.xml"
+DEFAULT_SKIN = "PLi-HD/skin.xml"
 # on SD hardware, PLi-HD will not be available
 if not fileExists(resolveFilename(SCOPE_SKIN, DEFAULT_SKIN)):
 	# in that case, fallback to Magic (which is an SD skin)
@@ -599,10 +599,6 @@ def loadSingleSkinData(desktop, skin, path_prefix):
 					resolved_font = skin_path
 			addFont(resolved_font, name, scale, is_replacement, render)
 			#print "Font: ", resolved_font, name, scale, is_replacement
-
-		fallbackFont = resolveFilename(SCOPE_FONTS, "fallback.font", path_prefix=path_prefix)
-		if fileExists(fallbackFont):
-			addFont(fallbackFont, "Fallback", 100, -1, 0)
 
 		for alias in c.findall("alias"):
 			get = alias.attrib.get
