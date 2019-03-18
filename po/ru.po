@@ -3622,7 +3622,7 @@ msgstr "От :"
 
 #, python-format
 msgid "Frontprocessor version: %s"
-msgstr "Версия фронтпроцессора: %s"
+msgstr "Frontprocessor version: %s"
 
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
 msgid "Full screen"
