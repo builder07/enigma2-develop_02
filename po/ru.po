@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: enigma2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-27 22:08+0200\n"
-"PO-Revision-Date: 2018-12-20 13:31+0300\n"
+"PO-Revision-Date: 2019-03-22 10:38+0200\n"
 "Last-Translator: yuju\n"
 "Language-Team: yuju@mail.ru\n"
 "Language: ru\n"
@@ -3622,7 +3622,7 @@ msgstr "От :"
 
 #, python-format
 msgid "Frontprocessor version: %s"
-msgstr "Версия фронтпроцессора: %s"
+msgstr "Frontprocessor version: %s"
 
 #. TRANSLATORS: (aspect ratio policy: display as fullscreen, even if the content aspect ratio does not match the screen ratio)
 msgid "Full screen"
@@ -6914,25 +6914,25 @@ msgid "Select CAId"
 msgstr "Выберите CAId"
 
 msgid "Select Card Server"
-msgstr "Выборите кардсервера"
+msgstr "Выберите кардсервер"
 
 msgid "Select Channel"
-msgstr "Выборите канал"
+msgstr "Выберите канал"
 
 msgid "Select Fast DiSEqC if your aerial system supports this. If you are unsure select 'no'."
 msgstr "Выберите быстрый  DiSEqC, если Ваша система поддерживает это."
 
 msgid "Select HDD"
-msgstr "Выборите HDD"
+msgstr "Выберите HDD"
 
 msgid "Select Image"
-msgstr "Выборите имиджа"
+msgstr "Выберите имидж"
 
 msgid "Select Multiboot"
 msgstr "Выбрать мультизагрузку"
 
 msgid "Select Softcam"
-msgstr "Выборите эмулятора"
+msgstr "Выберите эмулятор"
 
 msgid "Select a bouquet"
 msgstr "Выберите букет"
