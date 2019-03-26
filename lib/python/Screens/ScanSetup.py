@@ -672,6 +672,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 		self.TerrestrialRegionEntry = None
 		self.TerrestrialCompleteEntry = None
 		self.is_id_boolEntry = None
+		self.t2mi_Entry = None
 		nim = nimmanager.nim_slots[index_to_scan]
 		if self.DVB_type.value == "DVB-S":
 			self.typeOfScanEntry = getConfigListEntry(_("Type of scan"), self.scan_type)
