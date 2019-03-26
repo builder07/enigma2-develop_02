@@ -62,7 +62,7 @@ public:
 	enum {
 		PLS_Default_Gold_Code, PLS_Default_Root_Code
 	};
-	
+
 	enum {
 		No_T2MI_PLP_Id = eDVBFrontendParametersSatellite::No_Stream_Id_Filter
 	};

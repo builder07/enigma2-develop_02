@@ -172,6 +172,7 @@ int eDVBTransponderData::getPLSCode() const
 {
 	return -1;
 }
+
 int eDVBTransponderData::getT2MIPlpId() const
 {
 	return -1;
