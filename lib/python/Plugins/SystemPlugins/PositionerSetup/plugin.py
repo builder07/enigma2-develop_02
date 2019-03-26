@@ -164,8 +164,7 @@ class PositionerSetup(Screen):
 			cur.get("pilot", eDVBFrontendParametersSatellite.Pilot_Unknown),
 			cur.get("is_id", 0),
 			cur.get("pls_mode", eDVBFrontendParametersSatellite.PLS_Gold),
-			cur.get("pls_code", eDVBFrontendParametersSatellite.PLS_Default_Gold_Code))
-			cur.get("pls_code", eDVBFrontendParametersSatellite.PLS_Default_Gold_Code)),
+			cur.get("pls_code", eDVBFrontendParametersSatellite.PLS_Default_Gold_Code),
 			cur.get("t2mi_plp_id", eDVBFrontendParametersSatellite.No_T2MI_PLP_Id))
 
 		self.tuner.tune(tp)
@@ -1422,7 +1421,7 @@ class TunerScreen(ConfigListScreen, Screen):
 			(eDVBFrontendParametersSatellite.PLS_Combo, _("Combo"))])
 		self.scan_sat.pls_code = ConfigInteger(default = defaultSat.get("pls_code", eDVBFrontendParametersSatellite.PLS_Default_Gold_Code), limits = (0, 262142))
 
-		        if defaultSat.get("t2mi_plp_id",eDVBFrontendParametersSatellite.No_T2MI_PLP_Id) != eDVBFrontendParametersSatellite.No_T2MI_PLP_Id and defaultSat.get("t2mi_plp_id",eDVBFrontendParametersSatellite.No_T2MI_PLP_Id) != 0:
+		if defaultSat.get("t2mi_plp_id",eDVBFrontendParametersSatellite.No_T2MI_PLP_Id) != eDVBFrontendParametersSatellite.No_T2MI_PLP_Id and defaultSat.get("t2mi_plp_id",eDVBFrontendParametersSatellite.No_T2MI_PLP_Id) != 0:
 			self.scan_sat.t2mi  = ConfigSelection(default = "on", choices = [("on", _("On")),("off", _("Off"))])
 			self.scan_sat.t2mi_pid = ConfigInteger(default = (defaultSat.get("t2mi_plp_id",eDVBFrontendParametersSatellite.No_T2MI_PLP_Id)>>16)&0x1fff, limits = (0, 8192))
 			self.scan_sat.t2mi_plp = ConfigInteger(default = (defaultSat.get("t2mi_plp_id",eDVBFrontendParametersSatellite.No_T2MI_PLP_Id))&0xff, limits = (0, 255))
@@ -1475,7 +1474,7 @@ class TunerScreen(ConfigListScreen, Screen):
 				if self.scan_sat.t2mi.value == "on":
 					self.list.append(getConfigListEntry( _('T2MI PID'), self.scan_sat.t2mi_pid))
 					self.list.append(getConfigListEntry( _('T2MI PLP ID'), self.scan_sat.t2mi_plp))
-					else: # "predefined_transponder"
+		else: # "predefined_transponder"
 			self.list.append(getConfigListEntry(_("Transponder"), self.tuning.transponder))
 			currtp = self.transponderToString([None, self.scan_sat.frequency.value, self.scan_sat.symbolrate.value, self.scan_sat.polarization.value])
 			self.tuning.transponder.setValue(currtp)
@@ -1491,7 +1490,7 @@ class TunerScreen(ConfigListScreen, Screen):
 
 	def systemChanged(self, *parm):
 		self.createSetup()
-		
+
 	def t2miChanged(self, *parm):
 		if self.scan_sat.t2mi.value == "on":
 			if self.t2mi_pid_memory == 0:
@@ -1541,7 +1540,7 @@ class TunerScreen(ConfigListScreen, Screen):
 				fec = self.scan_sat.fec_s2.value
 			else:
 				fec = self.scan_sat.fec.value
-				
+
 			if self.scan_sat.t2mi_pid.value > 0 and self.scan_sat.t2mi_plp.value >= 0:
 				t2mi_plp_id = (self.scan_sat.t2mi_pid.value<<16)|self.scan_sat.t2mi_plp.value
 			else:
