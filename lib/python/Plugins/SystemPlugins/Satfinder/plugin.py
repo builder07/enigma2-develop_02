@@ -165,19 +165,19 @@ class Satfinder(ScanSetup, ServiceScan):
 						self.is_id_boolEntry = getConfigListEntry(_('Transport Stream Type'), self.scan_sat.is_id_bool)
 						self.list.append(self.is_id_boolEntry)
 						if self.scan_sat.is_id_bool.value:
-							self.list.append(getConfigListEntry("   " + _('Input Stream ID'), self.scan_sat.is_id))
-							self.list.append(getConfigListEntry("   " + _('PLS Mode'), self.scan_sat.pls_mode))
-							self.list.append(getConfigListEntry("   " + _('PLS Code'), self.scan_sat.pls_code))
+							self.list.append(getConfigListEntry(_('Input Stream ID'), self.scan_sat.is_id))
+							self.list.append(getConfigListEntry(_('PLS Mode'), self.scan_sat.pls_mode))
+							self.list.append(getConfigListEntry(_('PLS Code'), self.scan_sat.pls_code))
 					else:
 						self.scan_sat.is_id.value = eDVBFrontendParametersSatellite.No_Stream_Id_Filter
 						self.scan_sat.pls_mode.value = eDVBFrontendParametersSatellite.PLS_Gold
 						self.scan_sat.pls_code.value = eDVBFrontendParametersSatellite.PLS_Default_Gold_Code
-							self.t2mi_Entry = getConfigListEntry(_('T2MI'), self.scan_sat.t2mi)
+					self.t2mi_Entry = getConfigListEntry(_('T2MI'), self.scan_sat.t2mi)
 					self.list.append(self.t2mi_Entry)
 					if self.scan_sat.t2mi.value == "on":
 						self.list.append(getConfigListEntry( _('T2MI PID'), self.scan_sat.t2mi_pid))
 						self.list.append(getConfigListEntry( _('T2MI PLP ID'), self.scan_sat.t2mi_plp))
-		elif self.tuning_type.value == "predefined_transponder":
+			elif self.tuning_type.value == "predefined_transponder":
 				self.updatePreDefTransponders()
 				self.preDefTransponderEntry = getConfigListEntry(_("Transponder"), self.preDefTransponders)
 				self.list.append(self.preDefTransponderEntry)
@@ -420,7 +420,7 @@ class Satfinder(ScanSetup, ServiceScan):
 				fec = self.scan_sat.fec_s2.value
 			else:
 				fec = self.scan_sat.fec.value
-				
+
 			if self.scan_sat.t2mi_pid.value > 0 and self.scan_sat.t2mi_plp.value >= 0:
 				t2mi_plp_id = (self.scan_sat.t2mi_pid.value<<16)|self.scan_sat.t2mi_plp.value
 			else:
@@ -484,7 +484,8 @@ class Satfinder(ScanSetup, ServiceScan):
 				self.transponder[10],# input stream id
 				self.transponder[11],# pls mode
 				self.transponder[12],# pls code
-				self.transponder[13] # t2mi_plp_id			)
+				self.transponder[13] # t2mi_plp_id
+			)
 		elif self.DVB_type.value == "DVB-T":
 			parm = buildTerTransponder(
 				self.transponder[1],  # frequency
