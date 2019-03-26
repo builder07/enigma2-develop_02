@@ -162,6 +162,7 @@ class ServiceInfo(Screen):
 				fillList = [(_("Service name"), name, TYPE_TEXT),
 					(_("Videocodec, size & format"), resolution, TYPE_TEXT),
 					(_("Service reference"), ":".join(refstr.split(":")[:9]), TYPE_TEXT),
+					(_("Namespace"), self.getServiceInfoValue(iServiceInformation.sNamespace), TYPE_VALUE_HEX, 8),
 					(_("URL"), refstr.split(":")[10].replace("%3a", ":"), TYPE_TEXT)]
 				subList = self.getSubtitleList()
 			else:
@@ -221,7 +222,7 @@ class ServiceInfo(Screen):
 
 	def getTrackList(self):
 		trackList = []
-		currentTrack = self.audio.getCurrentTrack()
+		currentTrack = self.audio and self.audio.getCurrentTrack()
 		if self.numberofTracks:
 			for i in range(0, self.numberofTracks):
 				audioDesc = self.audio.getTrackInfo(i).getDescription()
@@ -317,7 +318,6 @@ class ServiceInfo(Screen):
 					(_("PLS Mode"), frontendData.get("pls_mode", None), TYPE_TEXT),
 					(_("PLS Code"), frontendData.get("pls_code", 0), TYPE_VALUE_DEC),
 					(_("T2MI PLP ID"), t2mi(frontendData.get("t2mi_plp_id", -1)), TYPE_TEXT))
-
 			elif frontendDataOrg["tuner_type"] == "DVB-C":
 				return (tuner,
 					(_("Modulation"), frontendData["modulation"], TYPE_TEXT),
