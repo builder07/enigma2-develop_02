@@ -672,7 +672,6 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 		self.TerrestrialRegionEntry = None
 		self.TerrestrialCompleteEntry = None
 		self.is_id_boolEntry = None
-		self.t2mi_Entry = None
 		nim = nimmanager.nim_slots[index_to_scan]
 		if self.DVB_type.value == "DVB-S":
 			self.typeOfScanEntry = getConfigListEntry(_("Type of scan"), self.scan_type)
@@ -725,9 +724,9 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 						self.is_id_boolEntry = getConfigListEntry(_('Transport Stream Type'), self.scan_sat.is_id_bool)
 						self.list.append(self.is_id_boolEntry)
 						if self.scan_sat.is_id_bool.value:
-							self.list.append(getConfigListEntry("   " + _('Input Stream ID'), self.scan_sat.is_id))
-							self.list.append(getConfigListEntry("   " + _('PLS Mode'), self.scan_sat.pls_mode))
-							self.list.append(getConfigListEntry("   " + _('PLS Code'), self.scan_sat.pls_code))
+							self.list.append(getConfigListEntry(_('Input Stream ID'), self.scan_sat.is_id))
+							self.list.append(getConfigListEntry(_('PLS Mode'), self.scan_sat.pls_mode))
+							self.list.append(getConfigListEntry(_('PLS Code'), self.scan_sat.pls_code))
 					else:
 						self.scan_sat.is_id.value = eDVBFrontendParametersSatellite.No_Stream_Id_Filter
 						self.scan_sat.pls_mode.value = eDVBFrontendParametersSatellite.PLS_Gold
@@ -875,7 +874,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 				self.scan_sat.pls_mode.value = eDVBFrontendParametersSatellite.PLS_Gold
 				self.scan_sat.pls_code.value = eDVBFrontendParametersSatellite.PLS_Default_Gold_Code
 			self.createSetup()
-					elif cur == self.t2mi_Entry:
+		elif self.scan_type.value == "single_transponder" and cur == self.t2mi_Entry:
 			if self.scan_sat.t2mi.value == "on":
 				if self.t2mi_pid_memory == 0:
 					self.t2mi_pid_memory = 4096;
@@ -944,8 +943,8 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 					defaultSat["is_id"] = frontendData.get("is_id", defaultSat["is_id"])
 					defaultSat["pls_mode"] = frontendData.get("pls_mode", defaultSat["pls_mode"])
 					defaultSat["pls_code"] = frontendData.get("pls_code", defaultSat["pls_code"])
-					defaultSat["t2mi_plp_id"] = frontendData.get("t2mi_plp_id", defaultSat["t2mi_plp_id"])		
-	                        else:
+					defaultSat["t2mi_plp_id"] = frontendData.get("t2mi_plp_id", defaultSat["t2mi_plp_id"])
+				else:
 					defaultSat["fec"] = frontendData.get("fec_inner", eDVBFrontendParametersSatellite.FEC_Auto)
 				defaultSat["modulation"] = frontendData.get("modulation", eDVBFrontendParametersSatellite.Modulation_QPSK)
 				defaultSat["orbpos"] = frontendData.get("orbital_position", 0)
@@ -1370,7 +1369,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 					else:
 						fec = self.scan_sat.fec_s2.value
 					print "add sat transponder"
-										if self.scan_sat.t2mi_pid.value > 0 and self.scan_sat.t2mi_plp.value >= 0:
+					if self.scan_sat.t2mi_pid.value > 0 and self.scan_sat.t2mi_plp.value >= 0:
 						t2mi_plp_id = (self.scan_sat.t2mi_pid.value<<16)|self.scan_sat.t2mi_plp.value
 					else:
 						t2mi_plp_id = eDVBFrontendParametersSatellite.No_T2MI_PLP_Id
@@ -1569,7 +1568,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 				self.scan_sat.pilot.value,           # 9
 				self.scan_sat.is_id.value,           # 10
 				self.scan_sat.pls_mode.value,        # 11
-				self.scan_sat.pls_code.value         # 12
+				self.scan_sat.pls_code.value,        # 12
 				t2mi_plp_id                          # 13
 				# tsid
 				# onid
@@ -1595,7 +1594,7 @@ class ScanSetup(ConfigListScreen, Screen, CableTransponderSearchSupport, Terrest
 					tp_text = ("%s MIS %d") % (tp_text, tp[10])
 				if tp[12] > 0:
 					tp_text = ("%s Gold %d") % (tp_text, tp[12])
-			        if tp[13] > eDVBFrontendParametersSatellite.No_T2MI_PLP_Id:
+				if tp[13] > eDVBFrontendParametersSatellite.No_T2MI_PLP_Id:
 					tp_text = ("%s T2MI %d") % (tp_text, tp[13])
 			return tp_text
 		return _("Invalid transponder data")
