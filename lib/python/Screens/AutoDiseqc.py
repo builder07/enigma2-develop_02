@@ -159,7 +159,7 @@ class AutoDiseqc(Screen, ConfigListScreen):
 			eDVBFrontendParametersSatellite.No_Stream_Id_Filter,
 			eDVBFrontendParametersSatellite.PLS_Gold,
 			eDVBFrontendParametersSatellite.PLS_Default_Gold_Code,
-		        eDVBFrontendParametersSatellite.No_T2MI_PLP_Id,
+			eDVBFrontendParametersSatellite.No_T2MI_PLP_Id,
 			1388,
 			1388,
 			"Hispasat 30.0w"),
