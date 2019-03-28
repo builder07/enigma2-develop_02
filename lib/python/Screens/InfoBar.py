@@ -24,6 +24,7 @@ from Screens.Hotkey import InfoBarHotkey
 
 profile("LOAD:InitBar_Components")
 from Components.ActionMap import HelpableActionMap
+from Components.Timeshift import InfoBarTimeshift
 from Components.config import config
 from Components.ServiceEventTracker import ServiceEventTracker, InfoBarBase
 
