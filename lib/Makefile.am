@@ -15,6 +15,7 @@ EXTRA_DIST=
 noinst_PYTHON=
 nobase_install_PYTHON=
 installdir = $(pkglibdir)
+pluginexec_PROGRAMS=
 
 include actions/Makefile.inc
 include base/Makefile.inc
