@@ -1,2 +1,3 @@
-pluginexec_PROGRAMS = timeshift/createapscfiles
-timeshift_createapscfiles_SOURCES = timeshift/createapscfiles.cc
+pluginexecdir = $(libdir)/enigma2/python/Plugins/Extensions/Timeshift
+pluginexec_PROGRAMS = createapscfiles
+createapscfiles_SOURCES = timeshift/createapscfiles.cc
