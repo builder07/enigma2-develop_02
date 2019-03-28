@@ -15,7 +15,6 @@ EXTRA_DIST=
 noinst_PYTHON=
 nobase_install_PYTHON=
 installdir = $(pkglibdir)
-pluginexec_PROGRAMS=timeshift
 
 include actions/Makefile.inc
 include base/Makefile.inc
@@ -31,7 +30,6 @@ include gui/Makefile.inc
 include mmi/Makefile.inc
 include network/Makefile.inc
 include python/Makefile.inc
-include timeshift/Makefile.inc
 
 # Build the subdirs without parallellism
 SUBDIRS = python
