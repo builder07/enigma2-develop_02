@@ -1881,10 +1881,7 @@ class InfoBarTimeshift():
 			if not pauseService and not int(config.usage.timeshift_start_delay.value):
 				self.session.open(MessageBox, _("Timeshift not possible!"), MessageBox.TYPE_ERROR, simple = True)
 			print "no ts interface"
-			if pauseService:
-				return self.playpauseStreamService()
-			else:
-				return 0
+                return self.playpauseStreamService()
 
 		if ts.isTimeshiftEnabled():
 			print "hu, timeshift already enabled?"
