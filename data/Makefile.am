@@ -21,9 +21,6 @@ dist_pkgdata_DATA = \
 	groupedservices
 
 if HAVE_TEXTLCD
-if HAVE_7SEGMENT
-SUBDIRS += 7segment
-else
 dist_pkgdata_DATA += skin_text.xml
 else
 dist_pkgdata_DATA += skin_display.xml
