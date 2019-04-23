@@ -11523,3 +11523,9 @@ msgstr "®"
 
 msgid " min"
 msgstr " мин"
+
+# Swap
+
+msgid "Swap Manager"
+msgstr "Менеджер Swap"
+
